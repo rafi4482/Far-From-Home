@@ -1,4 +1,4 @@
-const Items = ({ item }) => {
+const Items = ({ item, onDeleteItems }) => {
   return (
     <li>
       <span
@@ -8,7 +8,7 @@ const Items = ({ item }) => {
       >
         {item.quantity} {item.description}
       </span>
-      <button>❌</button>
+      <button onClick={() => onDeleteItems(item.id)}>❌</button>
     </li>
   );
 };

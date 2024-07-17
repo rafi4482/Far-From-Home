@@ -1,23 +1,39 @@
 import { useState } from "react";
 
-const Form = () => {
+const Form = ({ onAddItems }) => {
   const [description, setDescription] = useState("");
-  const [option, setOption] = useState("packed");
+  const [quantity, setQuantity] = useState(1);
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    if (!description) return;
+
+    const newItem = {
+      description,
+      quantity,
+      packed: false,
+      id: Date.now(),
+    };
+
+    onAddItems(newItem);
+
+    setDescription("");
+    setQuantity(1);
   };
 
   return (
-    <div className="add-form" onSubmit={handleSubmit}>
+    <form className="add-form" onSubmit={handleSubmit}>
       <h3>What to pack for your next 🚗 trip? </h3>
       <select
-        value={option}
-        onChange={(event) => setOption(event.target.value)}
+        value={quantity}
+        onChange={(event) => setQuantity(Number(event.target.value))}
       >
-        <option value="all">All</option>
-        <option value="packed">Packed</option>
-        <option value="unpacked">Unpacked</option>
+        {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
+          <option value={num} key={num}>
+            {num}
+          </option>
+        ))}
       </select>
       <input
         type="text"
@@ -25,8 +41,8 @@ const Form = () => {
         value={description}
         onChange={(event) => setDescription(event.target.value)}
       />
-      <button>Add</button>
-    </div>
+      <button type="submit">Add</button>
+    </form>
   );
 };
 

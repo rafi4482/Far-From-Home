@@ -39,11 +39,6 @@ h1 {
   transition: transform 0.3s, color 0.3s;
 }
 
-h1:hover {
-  transform: scale(1.05);
-  color: #e5771f;
-}
-
 .add-form {
   background-color: #e5771f;
   padding: 2.8rem 0;

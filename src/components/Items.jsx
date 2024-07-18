@@ -38,9 +38,10 @@ const Items = ({ item, onDeleteItems, onEditItems, onToggleItems }) => {
             value={item.packed}
             onChange={() => onToggleItems(item.id)}
           />
-          <span>{item.quantity}</span>
+          <span style={item.packed ? { textDecoration: "line-through" } : {}}>
+            {item.quantity} {item.description}
+          </span>
 
-          <span>{item.description}</span>
           <button onClick={() => onDeleteItems(item.id)}>❌</button>
 
           <button

@@ -8,8 +8,8 @@ const Footer = ({ items }) => {
   return (
     <footer className="stats">
       <em>
-        You have {numItems} items on your list and you have packed {numPacked} (
-        {packedPercentage}%){" "}
+        🛍️ You have {numItems} items on your list and you have packed{" "}
+        {numPacked} ({packedPercentage}%) 🚃
       </em>
     </footer>
   );

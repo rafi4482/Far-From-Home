@@ -21,6 +21,14 @@ function App() {
     );
   };
 
+  const handleToggleItems = (id) => {
+    setItems((items) =>
+      items.map((item) =>
+        item.id === id ? { ...item, packed: !item.packed } : item
+      )
+    );
+  };
+
   return (
     <div className="app">
       <Header />
@@ -29,6 +37,7 @@ function App() {
         items={items}
         onDeleteItems={handleDeleteItems}
         onEditItems={handleEditItems}
+        onToggleItems={handleToggleItems}
       />
       <Footer />
     </div>

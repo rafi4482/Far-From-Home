@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Items = ({ item, onDeleteItems, onEditItems }) => {
+const Items = ({ item, onDeleteItems, onEditItems, onToggleItems }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [newDescription, setNewDescription] = useState(item.description);
   const [newQuantity, setNewQuantity] = useState(item.quantity);
@@ -33,6 +33,11 @@ const Items = ({ item, onDeleteItems, onEditItems }) => {
         </>
       ) : (
         <>
+          <input
+            type="checkbox"
+            value={item.packed}
+            onChange={() => onToggleItems(item.id)}
+          />
           <span>{item.quantity}</span>
 
           <span>{item.description}</span>

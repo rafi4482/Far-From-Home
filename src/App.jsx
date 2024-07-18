@@ -39,7 +39,7 @@ function App() {
         onEditItems={handleEditItems}
         onToggleItems={handleToggleItems}
       />
-      <Footer />
+      <Footer items={items} />
     </div>
   );
 }

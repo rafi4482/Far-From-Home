@@ -15,11 +15,21 @@ function App() {
     setItems((items) => items.filter((item) => item.id !== id));
   };
 
+  const handleEditItems = (id, updatedItem) => {
+    setItems((items) =>
+      items.map((item) => (item.id === id ? { ...item, ...updatedItem } : item))
+    );
+  };
+
   return (
     <div className="app">
       <Header />
       <Form onAddItems={handleAddItems} />
-      <Item items={items} onDeleteItems={handleDeleteItems} />
+      <Item
+        items={items}
+        onDeleteItems={handleDeleteItems}
+        onEditItems={handleEditItems}
+      />
       <Footer />
     </div>
   );

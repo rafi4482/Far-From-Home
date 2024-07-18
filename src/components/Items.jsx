@@ -1,14 +1,51 @@
-const Items = ({ item, onDeleteItems }) => {
+import { useState } from "react";
+
+const Items = ({ item, onDeleteItems, onEditItems }) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [newDescription, setNewDescription] = useState(item.description);
+  const [newQuantity, setNewQuantity] = useState(item.quantity);
+
+  const handleSave = () => {
+    onEditItems(item.id, {
+      description: newDescription,
+      quantity: newQuantity,
+    });
+    setIsEditing(false);
+  };
+
   return (
     <li>
-      <span
-        style={{
-          textDecoration: item.packed ? "line-through" : "none",
-        }}
-      >
-        {item.quantity} {item.description}
-      </span>
-      <button onClick={() => onDeleteItems(item.id)}>❌</button>
+      {isEditing ? (
+        <>
+          <input
+            type="text"
+            value={newDescription}
+            onChange={(event) => setNewDescription(event.target.value)}
+          />
+          <input
+            type="number"
+            value={newQuantity}
+            onChange={(event) => setNewQuantity(Number(event.target.value))}
+          />
+          <button style={{ color: "chartreuse" }} onClick={handleSave}>
+            Save
+          </button>
+        </>
+      ) : (
+        <>
+          <span>{item.quantity}</span>
+
+          <span>{item.description}</span>
+          <button onClick={() => onDeleteItems(item.id)}>❌</button>
+
+          <button
+            style={{ color: "orange" }}
+            onClick={() => setIsEditing(true)}
+          >
+            Edit
+          </button>
+        </>
+      )}
     </li>
   );
 };

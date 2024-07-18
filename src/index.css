@@ -69,9 +69,7 @@ input {
   transition: background-color 0.3s, transform 0.3s;
 }
 
-button:hover,
-select:hover,
-input:hover {
+button:hover {
   background-color: #ffd7a3;
   transform: scale(1.05);
 }

@@ -1,7 +1,13 @@
 import { useState } from "react";
 import Items from "./Items";
 
-const Item = ({ items, onDeleteItems, onEditItems, onToggleItems }) => {
+const Item = ({
+  items,
+  onDeleteItems,
+  onEditItems,
+  onToggleItems,
+  onClearItems,
+}) => {
   const [sortby, setSortBy] = useState("input");
 
   let sortedItems;
@@ -28,6 +34,7 @@ const Item = ({ items, onDeleteItems, onEditItems, onToggleItems }) => {
             onDeleteItems={onDeleteItems}
             onEditItems={onEditItems}
             onToggleItems={onToggleItems}
+            onClearItems={onClearItems}
           />
         ))}
       </ul>
@@ -40,6 +47,7 @@ const Item = ({ items, onDeleteItems, onEditItems, onToggleItems }) => {
           <option value="description">Sort by description</option>
           <option value="packed">Sort by packed status</option>
         </select>
+        <button onClick={onClearItems}>Clear Items</button>
       </div>
     </div>
   );

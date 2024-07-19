@@ -29,6 +29,10 @@ function App() {
     );
   };
 
+  const handleClearItems = () => {
+    setItems([]);
+  };
+
   return (
     <div className="app">
       <Header />
@@ -38,6 +42,7 @@ function App() {
         onDeleteItems={handleDeleteItems}
         onEditItems={handleEditItems}
         onToggleItems={handleToggleItems}
+        onClearItems={handleClearItems}
       />
       <Footer items={items} />
     </div>
